@@ -136,6 +136,15 @@ class Repository(context: Context) {
     fun getTotalProfit(start: Long, end: Long): Flow<Double?> =
         saleDao.getTotalProfit(start, end)
 
+    fun getTotalRevenue(start: Long, end: Long): Flow<Double?> =
+        saleDao.getTotalRevenue(start, end)
+
+    fun getSalesCountInPeriod(start: Long, end: Long): Flow<Long> =
+        saleDao.getSalesCountInPeriod(start, end)
+
+    fun getTotalQuantityInPeriod(start: Long, end: Long): Flow<Long> =
+        saleDao.getTotalQuantityInPeriod(start, end)
+
     // ========== HELPER METHODS ==========
 
     suspend fun increaseStock(productId: Int) {

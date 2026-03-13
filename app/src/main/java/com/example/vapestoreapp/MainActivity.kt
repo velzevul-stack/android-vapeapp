@@ -89,6 +89,7 @@ fun AppNavigation(isDarkMode: Boolean = true, onDarkModeChange: (Boolean) -> Uni
     val items = listOf(
         NavScreen.Accept,
         NavScreen.Sell,
+        NavScreen.Home,
         NavScreen.Cabinet,
         NavScreen.Management
     )
@@ -97,11 +98,10 @@ fun AppNavigation(isDarkMode: Boolean = true, onDarkModeChange: (Boolean) -> Uni
         bottomBar = {
             Surface(
                 color = MaterialTheme.colorScheme.surface,
-                tonalElevation = 0.dp,
-                shadowElevation = 12.dp
+                tonalElevation = 0.dp
             ) {
                 Column {
-                    HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+                    HorizontalDivider(color = com.example.vapestoreapp.ui.theme.BorderSubtleDark)
                     NavigationBar(
                         containerColor = Color.Transparent,
                         tonalElevation = 0.dp
@@ -115,7 +115,7 @@ fun AppNavigation(isDarkMode: Boolean = true, onDarkModeChange: (Boolean) -> Uni
                                     Icon(
                                         imageVector = screen.icon,
                                         contentDescription = screen.title,
-                                        modifier = Modifier.size(24.dp)
+                                        modifier = Modifier.size(if (screen.isHome) 24.dp else 22.dp)
                                     )
                                 },
                                 label = {
@@ -126,11 +126,11 @@ fun AppNavigation(isDarkMode: Boolean = true, onDarkModeChange: (Boolean) -> Uni
                                 },
                                 selected = isSelected,
                                 colors = NavigationBarItemDefaults.colors(
-                                    selectedIconColor = MaterialTheme.colorScheme.onSecondaryContainer,
-                                    selectedTextColor = MaterialTheme.colorScheme.onSecondaryContainer,
-                                    indicatorColor = MaterialTheme.colorScheme.secondaryContainer,
-                                    unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                                    unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant
+                                    selectedIconColor = com.example.vapestoreapp.ui.theme.PastelMint,
+                                    selectedTextColor = com.example.vapestoreapp.ui.theme.TextPrimaryDark,
+                                    indicatorColor = com.example.vapestoreapp.ui.theme.SurfaceElevatedDark,
+                                    unselectedIconColor = com.example.vapestoreapp.ui.theme.TextSecondaryDark,
+                                    unselectedTextColor = com.example.vapestoreapp.ui.theme.TextTertiaryDark
                                 ),
                                 onClick = {
                                     navController.navigate(screen.route) {
@@ -150,11 +150,12 @@ fun AppNavigation(isDarkMode: Boolean = true, onDarkModeChange: (Boolean) -> Uni
     ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = NavScreen.Sell.route,
+            startDestination = NavScreen.Home.route,
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(NavScreen.Accept.route) { AcceptScreen() }
             composable(NavScreen.Sell.route) { SellScreen() }
+            composable(NavScreen.Home.route) { HomeScreen(navController = navController) }
             composable(NavScreen.Cabinet.route) {
                 CabinetScreen(
                     isDarkMode = isDarkMode,

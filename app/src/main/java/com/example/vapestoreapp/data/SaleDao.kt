@@ -32,6 +32,12 @@ interface SaleDao {
     @Query("SELECT SUM(revenue) FROM sales WHERE date BETWEEN :start AND :end AND isCancelled = 0")
     fun getTotalRevenue(start: Long, end: Long): Flow<Double?>
 
+    @Query("SELECT COUNT(*) FROM sales WHERE date BETWEEN :start AND :end AND isCancelled = 0")
+    fun getSalesCountInPeriod(start: Long, end: Long): Flow<Long>
+
+    @Query("SELECT COALESCE(SUM(quantity), 0) FROM sales WHERE date BETWEEN :start AND :end AND isCancelled = 0")
+    fun getTotalQuantityInPeriod(start: Long, end: Long): Flow<Long>
+
     // НОВЫЕ МЕТОДЫ:
     @Query("UPDATE sales SET isCancelled = 1 WHERE id = :saleId")
     suspend fun cancelSale(saleId: Int)

@@ -22,18 +22,18 @@ data class AppSemanticColors(
 
 internal val LocalAppSemanticColors = staticCompositionLocalOf {
     AppSemanticColors(
-        success = AccentPrimaryVariant,
+        success = SuccessDark,
         onSuccess = Color.White,
-        successContainer = SuccessContainerLight,
-        onSuccessContainer = OnSuccessContainerLight,
+        successContainer = SuccessContainerDark,
+        onSuccessContainer = OnSuccessContainerDark,
         warning = AccentWarning,
         onWarning = Color.Black,
-        warningContainer = WarningContainerLight,
-        onWarningContainer = OnWarningContainerLight,
+        warningContainer = WarningContainerDark,
+        onWarningContainer = OnWarningContainerDark,
         info = AccentInfo,
         onInfo = Color.White,
-        infoContainer = InfoContainerLight,
-        onInfoContainer = OnInfoContainerLight
+        infoContainer = InfoContainerDark,
+        onInfoContainer = OnInfoContainerDark
     )
 }
 
