@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Vape Store App</string>
+
+    <!-- Навигация -->
+    <string name="accept_tab">Принять</string>
+    <string name="sell_tab">Продать</string>
+    <string name="cabinet_tab">Кабинет</string>
+
+    <!-- Экран Принять -->
+    <string name="accept_title">📦 ПРИНЯТЬ ТОВАР НА СКЛАД</string>
+    <string name="barcode_input">1. Введите или отсканируйте штрих-код:</string>
+    <string name="barcode_hint">Штрих-код (13 цифр)</string>
+    <string name="barcode_placeholder">Введите или отсканируйте</string>
+    <string name="scan_button">📷 Сканировать штрих-код</string>
+    <string name="clear_button">Очистить</string>
+    <string name="select_from_list">2. Или выберите из списка:</string>
+    <string name="select_brands_button">📋 Выбрать из списка брендов</string>
+
+    <!-- Экран Продать -->
+    <string name="sell_title">🛒 ПРОДАТЬ ТОВАР</string>
+    <string name="find_product">1. Найдите товар:</string>
+    <string name="search_hint">Штрих-код или название</string>
+    <string name="brands_button">Список</string>
+    <string name="selected_product">2. Выбранный товар:</string>
+    <string name="discount_title">3. Скидка (BYN):</string>
+    <string name="discount_hint">Сумма скидки</string>
+    <string name="comment_title">4. Комментарий (опционально):</string>
+    <string name="comment_hint">Комментарий к продаже</string>
+    <string name="sell_button">ПРОДАТЬ ТОВАР</string>
+    <string name="change_selection">Изменить выбор</string>
+    <string name="new_sale">Новая продажа</string>
+
+    <!-- Экран Кабинет -->
+    <string name="cabinet_title">🏢 КАБИНЕТ</string>
+    <string name="stock_tab">📦 Склад</string>
+    <string name="sales_tab">💰 Продажи</string>
+    <string name="products_tab">📋 Товары</string>
+
+    <!-- Диалоги -->
+    <string name="choose_brand">📋 ВЫБЕРИТЕ БРЕНД</string>
+    <string name="choose_flavor">🍬 ВЫБЕРИТЕ ВКУС</string>
+    <string name="add_new_product">➕ ДОБАВИТЬ НОВЫЙ ТОВАР</string>
+    <string name="scanning_title">📷 Сканирование</string>
+    <string name="close">Закрыть</string>
+
+    <!-- Категории -->
+    <string name="category_liquid">🍬 Жидкость</string>
+    <string name="category_consumable">⚙️ Расходник</string>
+    <string name="category_vape">🚬 Вейп</string>
+
+    <!-- Кнопки -->
+    <string name="add">Добавить</string>
+    <string name="cancel">Отмена</string>
+    <string name="ok">ОК</string>
+    <string name="save">Сохранить</string>
+    <string name="delete">Удалить</string>
+    <string name="refresh">Обновить</string>
+    <string name="copy">Копировать</string>
+    <string name="manual_input">✏️ Ввести вручную</string>
+    <string name="choose_from_list">Выбрать из списка</string>
+
+    <!-- Сообщения -->
+    <string name="product_added">✅ Добавлено</string>
+    <string name="product_not_found">❗ Товар не найден</string>
+    <string name="sale_success">✅ ПРОДАНО</string>
+    <string name="error">❌ Ошибка</string>
+    <string name="no_products">Нет товаров в базе</string>
+    <string name="no_stock">Нет товаров в наличии</string>
+    <string name="no_flavors">Нет вкусов для этого бренда</string>
+
+    <!-- Поля формы -->
+    <string name="brand_label">Название бренда *</string>
+    <string name="flavor_label">Вкус жидкости *</string>
+    <string name="strength_label">Крепость (mg)</string>
+    <string name="emoji_label">Эмодзи (опционально)</string>
+    <string name="barcode_label">Штрих-код (13 цифр)</string>
+    <string name="purchase_price_label">Закупочная цена</string>
+    <string name="retail_price_label">Розничная цена</string>
+
+    <!-- Плейсхолдеры -->
+    <string name="brand_placeholder_liquid">PODONKI PODGON</string>
+    <string name="brand_placeholder_consumable">Испаритель aegis boost 0.2 (50-58W)</string>
+    <string name="brand_placeholder_vape">Aegis boost PURPLE</string>
+    <string name="flavor_placeholder">Например: АПЕЛЬСИНОВОЕ ДРАЖЕ</string>
+    <string name="strength_placeholder">Например: 50</string>
+    <string name="emoji_placeholder">Например: 🧊</string>
+    <string name="price_placeholder">0.00</string>
+    <string name="comment_placeholder">Например: VIP клиент</string>
+
+    <!-- Инструкции -->
+    <string name="instructions_accept">💡 ИНСТРУКЦИЯ:\n• Введите штрих-код вручную (8+ цифр)\n• Или выберите бренд → вкус из списка\n• Если товар не найден - он будет добавлен</string>
+    <string name="instructions_sell">💡 Ищите по названию или используйте \'Список\' для выбора из брендов</string>
+    <string name="instructions_scan">Сканируйте штрих-коды подряд\nПри успешном сканировании поле очистится автоматически</string>
+
+    <!-- Склад -->
+    <string name="stock_header">📦⚡️Доставка от 5 до 20 минут⚡️📦\n❗️ТОЛЬКО НАЛИЧКА❗️</string>
+    <string name="empty_stock">📦 Склад пуст\nДобавьте товары через экран \'Принять\'</string>
+    <string name="total_items">📊 ИТОГО: %d шт.</string>
+    <string name="consumables_section">Расходники:</string>
+    <string name="vapes_section">Вейпы:</string>
+
+    <!-- Продажи -->
+    <string name="choose_period">Выберите период:</string>
+    <string name="custom_period">Произвольный период</string>
+    <string name="total_profit">ИТОГОВАЯ ПРИБЫЛЬ:</string>
+    <string name="sales_details">Детализация продаж:</string>
+    <string name="no_sales_data">Нет данных за выбранный период</string>
+
+    <!-- Сезоны -->
+    <string name="season_autumn">Осень</string>
+    <string name="season_winter">Зима</string>
+    <string name="season_spring">Весна</string>
+    <string name="season_summer">Лето</string>
+
+    <!-- Продукты -->
+    <string name="add_product">Добавить товар</string>
+    <string name="will_be_added">Будет добавлено:</string>
+
+    <!-- Копирование -->
+    <string name="copied">✅ Текст скопирован в буфер обмена</string>
+    <string name="copy_button">Копировать</string>
+    <string name="copied_button">Скопировано!</string>
+</resources>
