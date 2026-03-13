@@ -32,7 +32,7 @@ class AppTheme {
           systemNavigationBarColor: AppColors.surfaceDark,
         ),
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: AppColors.surfaceDark,
         elevation: 0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),

@@ -131,6 +131,53 @@ class VapeRepository {
     return result.first['c'] as int? ?? 0;
   }
 
+  Future<int> getTotalQuantityInPeriod(int start, int end) async {
+    final db = await _db;
+    final result = await db.rawQuery(
+      'SELECT COALESCE(SUM(quantity), 0) as s FROM sales WHERE date BETWEEN ? AND ? AND isCancelled = 0',
+      [start, end],
+    );
+    return (result.first['s'] as num?)?.toInt() ?? 0;
+  }
+
+  /// Возвращает прибыль по дням за последние 7 дней
+  /// Формат: список пар (название дня, прибыль)
+  Future<List<({String dayName, double profit})>> getWeekProfitByDay() async {
+    final db = await _db;
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+    
+    final dayNames = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
+    final result = <({String dayName, double profit})>[];
+    
+    // Получаем продажи за последние 7 дней
+    final weekStart = today.subtract(const Duration(days: 6));
+    final weekStartMs = weekStart.millisecondsSinceEpoch;
+    final weekEndMs = now.millisecondsSinceEpoch;
+    
+    final sales = await getSalesInPeriod(weekStartMs, weekEndMs);
+    
+    // Группируем по дням
+    final Map<int, double> dayProfits = {};
+    for (final sale in sales) {
+      final saleDate = DateTime.fromMillisecondsSinceEpoch(sale.date);
+      final dayStart = DateTime(saleDate.year, saleDate.month, saleDate.day);
+      final dayMs = dayStart.millisecondsSinceEpoch;
+      dayProfits[dayMs] = (dayProfits[dayMs] ?? 0) + sale.profit;
+    }
+    
+    // Формируем список за последние 7 дней
+    for (int i = 0; i < 7; i++) {
+      final day = weekStart.add(Duration(days: i));
+      final dayMs = day.millisecondsSinceEpoch;
+      final profit = dayProfits[dayMs] ?? 0.0;
+      final weekday = (day.weekday + 5) % 7; // Понедельник = 0
+      result.add((dayName: dayNames[weekday], profit: profit));
+    }
+    
+    return result;
+  }
+
   Future<void> increaseStock(int productId) async {
     final p = await getProductById(productId);
     if (p != null) await updateProduct(p.copyWith(stock: p.stock + 1));

@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
+import '../../app.dart';
 import '../../core/theme/app_colors.dart';
-import '../../data/models/product.dart';
-import '../../data/repositories/vape_repository.dart';
 
 class AcceptScreen extends ConsumerStatefulWidget {
   const AcceptScreen({super.key});

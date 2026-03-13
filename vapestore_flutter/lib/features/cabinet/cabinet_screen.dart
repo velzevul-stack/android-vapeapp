@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../app.dart';
 import '../../core/theme/app_colors.dart';
 import '../../data/models/product.dart';
 import '../../data/models/sale.dart';

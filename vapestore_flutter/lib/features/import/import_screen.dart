@@ -1,15 +1,16 @@
 import 'dart:convert';
+import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
+import '../../app.dart';
 import '../../core/theme/app_colors.dart';
 import '../../data/local/database.dart';
 import '../../data/models/database_backup.dart';
-import '../../data/repositories/vape_repository.dart';
 
 class ImportScreen extends ConsumerStatefulWidget {
   const ImportScreen({super.key});
@@ -40,16 +41,14 @@ class _ImportScreenState extends ConsumerState<ImportScreen> {
         });
         return;
       }
-      final path = result.files.single.path;
-      if (path == null) {
-        setState(() {
-          _isLoading = false;
-          _error = 'Не удалось получить путь к файлу';
-        });
-        return;
-      }
-      final bytes = await result.files.single.bytes;
-      if (bytes == null) {
+      final file = result.files.single;
+      Uint8List bytes;
+      if (file.bytes != null) {
+        bytes = file.bytes!;
+      } else if (file.path != null) {
+        final fileData = await File(file.path!).readAsBytes();
+        bytes = fileData;
+      } else {
         setState(() {
           _isLoading = false;
           _error = 'Не удалось прочитать файл';
@@ -92,7 +91,7 @@ class _ImportScreenState extends ConsumerState<ImportScreen> {
         });
         ref.invalidate(productsCountProvider);
       }
-    } catch (e, st) {
+    } catch (e) {
       setState(() {
         _isLoading = false;
         _error = 'Ошибка: $e';

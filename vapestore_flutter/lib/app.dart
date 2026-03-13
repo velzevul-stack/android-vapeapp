@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/theme/app_colors.dart';
 import 'data/repositories/vape_repository.dart';
 import 'features/accept/accept_screen.dart';
 import 'features/cabinet/cabinet_screen.dart';
 import 'features/home/home_screen.dart';
-import 'features/import/import_screen.dart';
 import 'features/management/management_screen.dart';
 import 'features/sell/sell_screen.dart';
 
@@ -39,21 +37,22 @@ class _AppShellState extends ConsumerState<AppShell> {
 
   @override
   Widget build(BuildContext context) {
-    return AsyncValue.when(
-      data: (count) {
-        if (count == 0) {
-          return const ImportScreen();
-        }
-        return Scaffold(
+    return Scaffold(
           backgroundColor: AppColors.backgroundDark,
           body: IndexedStack(
             index: _currentIndex,
-            children: const [
-              AcceptScreen(),
-              SellScreen(),
-              HomeScreen(),
-              CabinetScreen(),
-              ManagementScreen(),
+            children: [
+              const AcceptScreen(),
+              const SellScreen(),
+              HomeScreen(
+                onNavigateToIndex: (index) {
+                  setState(() {
+                    _currentIndex = index;
+                  });
+                },
+              ),
+              const CabinetScreen(),
+              const ManagementScreen(),
             ],
           ),
           bottomNavigationBar: Container(
@@ -77,17 +76,6 @@ class _AppShellState extends ConsumerState<AppShell> {
             ),
           ),
         );
-      },
-      loading: () => const Scaffold(
-        backgroundColor: AppColors.backgroundDark,
-        body: Center(
-          child: CircularProgressIndicator(color: AppColors.pastelMint),
-        ),
-      ),
-      error: (e, _) => Scaffold(
-        body: Center(child: Text('Ошибка: $e')),
-      ),
-    );
   }
 }
 
