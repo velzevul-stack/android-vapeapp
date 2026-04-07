@@ -18,6 +18,9 @@ import 'features/post/post_screen.dart';
 import 'features/profile/profile_screen.dart';
 import 'features/sell/sell_screen.dart';
 
+// Global route observer for tracking screen visibility
+final RouteObserver<PageRoute<dynamic>> routeObserver = RouteObserver<PageRoute<dynamic>>();
+
 final repositoryProvider = Provider<VapeRepository>((ref) => VapeRepository());
 
 /// Текущий индекс навигации (для отключения сканера на неактивных вкладках)
