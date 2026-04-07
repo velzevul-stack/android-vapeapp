@@ -176,7 +176,6 @@ class _PostScreenState extends ConsumerState<PostScreen> {
         return mgInProduct.any((mg) => mgSet.contains(mg));
       }).toList();
     }
-    // Убраны фильтры flavors и colors (они больше не поддерживаются)
     if (_filters.minPrice.isNotEmpty) {
       final min = double.tryParse(_filters.minPrice.replaceAll(',', '.'));
       if (min != null) list = list.where((p) => p.retailPrice >= min).toList();

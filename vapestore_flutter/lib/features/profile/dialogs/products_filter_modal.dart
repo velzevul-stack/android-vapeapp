@@ -266,7 +266,7 @@ class _ProductsFilterModalState extends State<ProductsFilterModal> {
                     onTap: () => _toggleCategory(c),
                   );
                 }),
-                // Крепость поставляем ПЕРЕД брендами
+                // Крепость — перед брендами
                 if (hasStrength) ...[
                   const SizedBox(height: 20),
                   _SectionTitle('Крепость (mg)'),

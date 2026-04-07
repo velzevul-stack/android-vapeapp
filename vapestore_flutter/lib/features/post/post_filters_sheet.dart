@@ -65,15 +65,6 @@ class PostFilterState {
   }
 }
 
-// Известные категории (для отображения даже если нет товаров в наличии)
-final knownCategories = {
-  'liquid': ('Жижи', '💧'),
-  'disposable': ('Одноразовые', '🔋'),
-  'consumable': ('Расходники', '📦'),
-  'vape': ('Устройства', '💨'),
-  'snus': ('Снюс', '🍃'),
-};
-
 class PostFiltersSheet extends StatefulWidget {
   final PostFilterState initialFilters;
   final List<Product> products;
@@ -343,7 +334,7 @@ class _PostFiltersSheetState extends State<PostFiltersSheet> {
                           style: TextStyle(color: AppColors.textSecondaryDark, fontSize: 13),
                         ),
                       ),
-                    // КреPOСТЬ ПЕРЕД брендами
+                    // Крепость — перед брендами
                     if (hasStrength) ...[
                       const SizedBox(height: 20),
                       _SectionTitle('Крепость (mg)${_filters.strengths.isEmpty && _strengthInputController.text.trim().isEmpty ? '' : ' (${_filters.strengths.length}${_strengthInputController.text.trim().isNotEmpty ? '+1' : ''})'}'),

@@ -86,7 +86,7 @@ class _ProductsScreenState extends ConsumerState<ProductsScreen> {
       for (final s in _filters.selectedStrengths) mgSet.add(s);
 
       list = list.where((p) {
-        // КреPOСТЬ ПРИМЕНЯЕТСЯ ТОЛЬКО К жижам, одноразовым и снюс
+        // Крепость только для жиж, одноразок и снюса
         final applies = p.category == 'liquid' || p.category == 'disposable' || p.category == 'snus';
         if (!applies) return true; // все остальные категории проходят фильтр
         final mgs = extractStrengthMgValues(p.brand)
